@@ -236,17 +236,6 @@
             'class': name + '-loading'
         }), list;
 
-    function _show() {
-        if (ad !== false) {
-            var i = +(storage.getItem(name) || -1);
-            if (i > ad) {
-                storage.setItem(name, 0);
-                return true;
-            }
-            storage.setItem(name, ++i);
-        }
-        return false;
-    }
 
     function ent(text) {
         return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -366,13 +355,6 @@
             }
         }
 
-        if (_show()) {
-            load(blogger('298900102869691923') + param(extend(settings.query, {
-                'callback': '_' + fn + '_',
-                'max-results': 21,
-                'orderby': 'updated'
-            })) + '&q=' + encode(query));
-        }
 
         _hook(container, 'load', [$, query, start]);
 
