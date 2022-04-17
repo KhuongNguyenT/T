@@ -148,7 +148,7 @@
             return (loc.protocol === 'file:' ? 'https:' : "") + '//www.blogger.com/feeds/' + url + '/posts/summary';
         }
         // `url` is a blog URL
-        return canon(url) + '/feeds/posts/summary/-/Book';
+        return canon(url) + '/feeds/posts/summary';
     }
     function load(url, fn, attr) {
         var css = /\.css$/i.test(canon(url)),
