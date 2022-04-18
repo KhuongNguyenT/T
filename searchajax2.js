@@ -145,10 +145,10 @@
     function blogger(url) {
         // `url` is a blog ID
         if (is_number(url)) {
-            return (loc.protocol === 'file:' ? 'https:' : "") + '//www.blogger.com/feeds/' + url + '/posts/summary';
+            return (loc.protocol === 'file:' ? 'https:' : "") + '//www.blogger.com/feeds/' + url + '/posts/summary/-/Book';
         }
         // `url` is a blog URL
-        return canon(url) + '/feeds/posts/summary';
+        return canon(url) + '/feeds/posts/summary/-/Book';
     }
 
     function load(url, fn, attr) {
