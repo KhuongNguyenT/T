@@ -42,8 +42,7 @@
     }
 
     function on(el, ev, fn) {
-        el.
-        dEventListener(ev, fn, false);
+        el.addEventListener(ev, fn, false);
     }
 
     function off(el, ev, fn) {
@@ -103,12 +102,12 @@
             // id: 0,
             name: 'js-search',
             css: 1,
-            ad: false,
+            ad: 0,
             live: true,
             source: 'form[action$="/search"]',
             container: 0,
             excerpt: 0,
-            image: true,
+            image: 0,
             target: 0,
             chunk: 50,
             text: {
@@ -193,7 +192,7 @@
     }
 
     if (ad === true) {
-        ad = 0;
+        ad = 3;
     }
 
     // Allow to update settings through current URL query string
@@ -237,6 +236,17 @@
             'class': name + '-loading'
         }), list;
 
+    function _show() {
+        if (ad !== false) {
+            var i = +(storage.getItem(name) || -1);
+            if (i > ad) {
+                storage.setItem(name, 0);
+                return true;
+            }
+            storage.setItem(name, ++i);
+        }
+        return false;
+    }
 
     function ent(text) {
         return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -356,6 +366,13 @@
             }
         }
 
+        if (_show()) {
+            load(blogger('707163180733897292') + param(extend(settings.query, {
+                'callback': '_' + fn + '_',
+                'max-results': 1,
+                'orderby': 'updated'
+            })) + '&q=' + encode(query));
+        }
 
         _hook(container, 'load', [$, query, start]);
 
