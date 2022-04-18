@@ -42,7 +42,8 @@
     }
 
     function on(el, ev, fn) {
-        el.addEventListener(ev, fn, false);
+        el.
+        dEventListener(ev, fn, false);
     }
 
     function off(el, ev, fn) {
@@ -102,12 +103,12 @@
             // id: 0,
             name: 'js-search',
             css: 1,
-            ad: true,
+            ad: false,
             live: true,
             source: 'form[action$="/search"]',
             container: 0,
             excerpt: 0,
-            image: 0,
+            image: true,
             target: 0,
             chunk: 50,
             text: {
@@ -192,7 +193,7 @@
     }
 
     if (ad === true) {
-        ad = 3;
+        ad = 0;
     }
 
     // Allow to update settings through current URL query string
