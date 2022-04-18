@@ -305,7 +305,7 @@
                 str = "";
             if (!url) return;
             if (size) {
-                var has_image = 'media$thumbnail' in current,
+                has_image = 'media$thumbnail' in current,
                     w, h, r;
                 if (size === true) size = 80;
                 if (is_number(size)) {
