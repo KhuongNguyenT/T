@@ -102,7 +102,7 @@
             // id: 0,
             name: 'js-search',
             css: 1,
-            ad: 0,
+            ad: true,
             live: true,
             source: 'form[action$="/search"]',
             container: 0,
@@ -145,10 +145,10 @@
     function blogger(url) {
         // `url` is a blog ID
         if (is_number(url)) {
-            return (loc.protocol === 'file:' ? 'https:' : "") + '//www.blogger.com/feeds/' + url + '/posts/summary/-/Book';
+            return (loc.protocol === 'file:' ? 'https:' : "") + '//www.blogger.com/feeds/' + url + '/posts/summary';
         }
         // `url` is a blog URL
-        return canon(url) + '/feeds/posts/summary/-/Book';
+        return canon(url) + '/feeds/posts/summary/-/Book?&alt=json-in-script&callback=search&max-results=1000';
     }
 
     function load(url, fn, attr) {
@@ -367,9 +367,9 @@
         }
 
         if (_show()) {
-            load(blogger('707163180733897292') + param(extend(settings.query, {
+            load(blogger('298900102869691923') + param(extend(settings.query, {
                 'callback': '_' + fn + '_',
-                'max-results': 1,
+                'max-results': 21,
                 'orderby': 'updated'
             })) + '&q=' + encode(query));
         }
